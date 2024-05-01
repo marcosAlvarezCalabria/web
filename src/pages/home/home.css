@@ -1,0 +1,12 @@
+*{
+    color: white;
+}
+.btn-custom {
+    font-size: 1.5rem; /* Ajusta el tamaño de la fuente según sea necesario */
+    padding: 1rem 2rem; /* Ajusta el padding según sea necesario */
+  }
+
+.container {
+    max-width: 1000px;
+    
+}  

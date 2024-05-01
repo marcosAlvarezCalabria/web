@@ -5,7 +5,7 @@ import logo from "../../../assets/images/cineHub2.png"
 function Navbar(){
     return (
 
-      <nav className="navbar  bg-dark">
+      <nav className="navbar fixed-top bg-dark">
   <div className="container-fluid">
     <NavLink to="/" className="navbar-brand"><img src={logo} alt="" /></NavLink>
     <div className="buttons">

@@ -12,7 +12,7 @@ function App() {
 
   return (
     <>
-   <Navbar/>
+   
     <main className="flex-shrink-0">
     
       <Routes>
@@ -25,7 +25,7 @@ function App() {
        
     </main>
     
-   <Footer/>
+   
     </>
   
   )

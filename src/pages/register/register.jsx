@@ -1,6 +1,7 @@
 import PageLayout from "../../components/layouts/page-layout/page-layout";
 import("./register.css")
 import { useForm } from "react-hook-form"
+import backgroundRegister from "../../assets/images/background-register1.jpg"
 
 function Register() {
 
@@ -12,9 +13,9 @@ function Register() {
 
 
     }
-
+    
     return (
-        <PageLayout>
+        <PageLayout background={backgroundRegister}>
 
             <div className=" h-100 d-flex justify-content-center align-items-center row" style={{ minHeight: "calc(100vh + 72px)" }}>
                 <form onSubmit={handleSubmit(handleEventSubmit)} className="form-container pt-4 col-8 col-md-6 col-lg-4">

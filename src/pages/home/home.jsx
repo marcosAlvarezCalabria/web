@@ -1,8 +1,8 @@
 import PageLayout from "../../components/layouts/page-layout/page-layout";
 import { Link } from "react-router-dom";
 import("./home.css")
-import Responsive from "../../components/ui/carousel-home/carousel-home";
 import CenterMode from "../../components/ui/carousel-home/carousel-home";
+import backgroundHomeBlack from "../../assets/images/background-home-black.jpg"
 
 
 
@@ -10,7 +10,7 @@ import CenterMode from "../../components/ui/carousel-home/carousel-home";
 function Home() {
   return (
 
-    <PageLayout>
+    <PageLayout background={backgroundHomeBlack}>
       <section className="text-center">
         <div className="d-flex flex-column justify-content-center align-items-center vh-100">
           <div className="row justify-content-center">

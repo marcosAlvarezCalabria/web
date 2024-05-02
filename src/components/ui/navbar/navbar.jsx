@@ -9,8 +9,8 @@ function Navbar(){
   <div className="container-fluid">
     <NavLink to="/" className="navbar-brand"><img src={logo} alt="" /></NavLink>
     <div className="buttons">
-    <NavLink to="/register" ><button className="btn btn-outline-danger" type="submit">Register</button></NavLink>
-      <NavLink to="/login" ><button className="btn btn-outline-danger" type="submit"> Login</button></NavLink>
+    
+      <NavLink to="/login" className="btn btn-outline-danger" >Login</NavLink>
     </div>
     
   </div>

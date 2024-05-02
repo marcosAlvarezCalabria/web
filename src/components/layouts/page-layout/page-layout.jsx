@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import "./page-layout.css"
 import { useLocation } from "react-router-dom";
-import backgroundHome from "../../../assets/images/background-home.jpg";
+import backgroundHome from "../../../assets/images/background-home-black.jpg";
 import backgroundRegister from "../../../assets/images/background-register1.jpg";
 import Navbar from "../../ui/navbar/navbar";
 import Footer from "../../ui/footer/footer";
@@ -23,12 +23,13 @@ function PageLayout({ children }) {
 
   return (
     <>
-    <Navbar/>
-     <div style={{ backgroundImage: `url(${backgroundComponent})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', minHeight: '100vh' }} className="main container-fluid p-0 m-0 vh-100">{children}</div>
-     <Footer/>
+
+      <div className="" style={{ backgroundImage: `url(${backgroundComponent})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', height: "100%", minHeight: "calc(100vh + 72px)", }}>{children}
+      </div>
+
     </>
-        
-   
+
+
   )
 }
 export default PageLayout;

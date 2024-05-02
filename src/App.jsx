@@ -8,26 +8,26 @@ import Navbar from "./components/ui/navbar/navbar"
 
 
 function App() {
- 
+
 
   return (
     <>
-   
-    <main className="flex-shrink-0">
-    
-      <Routes>
-        <Route path="/"element={<Home/>}/>
-        <Route path="/register" element={<Register/>}/>
-        <Route path="/login" element={<Login/>}/>
-        <Route path="/profile" element={<Profile/>}/>
 
-      </Routes>
-       
-    </main>
-    
-   
+      <main className="flex-shrink-0">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/profile" element={<Profile />} />
+
+        </Routes>
+        <Footer />
+      </main>
+
+
     </>
-  
+
   )
 }
 

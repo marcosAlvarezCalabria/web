@@ -3,7 +3,9 @@ import PageLayout from "../../components/layouts/page-layout/page-layout";
 import("./login.css")
 import backgroundHome from "../../assets/images/background-home-black.jpg"
 import { useForm } from "react-hook-form"
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { login } from "../../services/api.services";
+import { Navigate} from "react-router-dom"
 
 
 
@@ -11,10 +13,16 @@ import { NavLink } from "react-router-dom";
 function Login() {
 
     const { register, handleSubmit, formState: {errors}} = useForm()
+    const navigate = useNavigate();
 
-    const handleEventSubmit = (event) => {
-        console.log(event)
+   async function handleDataSubmit(data){
+        try {
+            await login(data);
+            navigate("/");
+        } catch (error) {
+            console.log(error)
 
+        }
 
     }
 
@@ -22,7 +30,7 @@ function Login() {
     return (
         <PageLayout background={backgroundHome}>
            <div className=" h-100 d-flex justify-content-center align-items-center row" style={{ minHeight: "calc(100vh + 72px)" }}>
-                <form onSubmit={handleSubmit(handleEventSubmit)} className="form-container pt-4 col-8 col-md-6 col-lg-4">
+                <form onSubmit={handleSubmit(handleDataSubmit)} className="form-container pt-4 col-8 col-md-6 col-lg-4">
                     {/*email  */}
                     <div>
                         <label className="form-label">Email address</label>

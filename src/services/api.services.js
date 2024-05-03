@@ -9,3 +9,10 @@ export function createUser(data) {
     console.log(data)
     return http.post("/user", data)
 }
+export function login(data) {
+    return http.post("/login", data)
+        .then((response) => {
+            localStorage.setItem("token", response.data.accessToken)
+            return response
+        })
+}

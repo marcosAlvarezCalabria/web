@@ -20,11 +20,11 @@ function CenterMode() {
   return (
     <div className="slider-container">
       <Slider {...settings}>
-        <img src={img1} alt="" srcset="" />
-        <img src={img1} alt="" srcset="" />
-        <img src={img1} alt="" srcset="" />
-        <img src={img1} alt="" srcset="" />
-        <img src={img1} alt="" srcset="" />
+        <img src={img1} alt="" srcSet="" />
+        <img src={img1} alt="" srcSet="" />
+        <img src={img1} alt="" srcSet="" />
+        <img src={img1} alt="" srcSet="" />
+        <img src={img1} alt="" srcSet="" />
 
       </Slider>
     </div>

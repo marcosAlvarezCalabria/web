@@ -1,38 +1,43 @@
 import PageLayout from "../../components/layouts/page-layout/page-layout";
-import("./register.css")
-import { useForm } from "react-hook-form"
+import("./register.css");
+import { useForm } from "react-hook-form";
 import backgroundRegister from "../../assets/images/background-register1.jpg"
 import { createUser } from "../../services/api.services";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+import { useEffect, useRef } from "react";
 
 function Register() {
 
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
+    const latitude = useRef(0);
+    const longitude = useRef(0);
+
+
+    useEffect(() => {
+        navigator.geolocation.getCurrentPosition((position) => {
+            console.log(position.coords.latitude, position.coords.longitude);
+            latitude.current = position.coords.latitude;
+            longitude.current = position.coords.longitude;
+        })
+    })
 
 
 
-    function handleDataSubmit(data) {
+    async function handleDataSubmit(data) {
         try {
-            navigator.geolocation.getCurrentPosition(async (position) => {
-                await createUser({
-                    ...data,
-                    location: {
-                        type: "Point",
-                        coordinates: [position.coords.latitude, position.coords.longitude]
-
-                    }
-                })
-                navigate("/login")
+            await createUser({
+                ...data,
+                location: {
+                    type: "Point",
+                    coordinates: [latitude.current, longitude.current]
+                }
             });
-
-            console.log(data)
-
+            navigate("/login");
         } catch (error) {
             console.log(error);
         }
-
     }
 
     return (
@@ -46,7 +51,7 @@ function Register() {
                         <input {...register("name", { required: "Name is required" })} type="text" className={`form-control ${errors.name ? "is-invalid" : ""}`} />
                         {errors.name ? (<div className="invalid-feedback">{errors.name.message} </div>) : ""}
                     </div>
-                    {/*username  */}
+                    {/*username */}
                     <div>
                         <label htmlFor="username" className="form-label">Username</label>
                         <input {...register("username", { required: "Username is required" })} type="text" className={`form-control ${errors.username ? "is-invalid" : ""}`} />

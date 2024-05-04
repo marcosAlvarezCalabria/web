@@ -48,7 +48,7 @@ function Register() {
     return (
         <PageLayout background={backgroundRegister}>
 
-            <div className=" h-100 d-flex justify-content-center align-items-center row" style={{ minHeight: "calc(100vh + 72px)" }}>
+            <div className=" h-100 d-flex justify-content-center align-items-center row">
                 <form onSubmit={handleSubmit(handleDataSubmit)} className="form-container pt-4 col-8 col-md-6 col-lg-4">
                     {/*Name  */}
                     <div>

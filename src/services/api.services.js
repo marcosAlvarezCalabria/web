@@ -45,3 +45,7 @@ export function login(data) {
 export function getUserProfile(data) {
    return http.get("/profile", data)
 }
+
+export function editUserProfile(data) {
+  return http.patch("/profile", data)
+}

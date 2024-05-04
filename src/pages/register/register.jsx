@@ -9,19 +9,18 @@ import { useEffect, useRef } from "react";
 function Register() {
 
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, setError, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
     const latitude = useRef(0);
     const longitude = useRef(0);
 
 
     useEffect(() => {
-        navigator.geolocation.getCurrentPosition((position) => {
-            console.log(position.coords.latitude, position.coords.longitude);
+        navigator.geolocation?.getCurrentPosition((position) => {
             latitude.current = position.coords.latitude;
             longitude.current = position.coords.longitude;
         })
-    })
+    }, [])
 
 
 
@@ -31,12 +30,18 @@ function Register() {
                 ...data,
                 location: {
                     type: "Point",
-                    coordinates: [latitude.current, longitude.current]
+                    coordinates: [latitude.current ?? 0, longitude.current ?? 0]
                 }
             });
             navigate("/login");
         } catch (error) {
-            console.log(error);
+            if (error.response?.data?.errors) {
+                const { errors } = error.response.data;
+                Object.keys(errors).forEach((fieldWithError) => {
+                    setError(fieldWithError, { message: errors[fieldWithError].message })
+                })
+            }
+            
         }
     }
 
@@ -51,17 +56,12 @@ function Register() {
                         <input {...register("name", { required: "Name is required" })} type="text" className={`form-control ${errors.name ? "is-invalid" : ""}`} />
                         {errors.name ? (<div className="invalid-feedback">{errors.name.message} </div>) : ""}
                     </div>
-                    {/*username */}
-                    <div>
-                        <label htmlFor="username" className="form-label">Username</label>
-                        <input {...register("username", { required: "Username is required" })} type="text" className={`form-control ${errors.username ? "is-invalid" : ""}`} />
-                        {errors.username ? (<div className="invalid-feedback">{errors.username.message} </div>) : ""}
-                    </div>
                     {/*email  */}
                     <div>
                         <label htmlFor="email" className="form-label">Email address</label>
                         <input {...register("email", { required: "Email is required" })} type="email" className={`form-control ${errors.email ? "is-invalid" : ""}`} />
                         {errors.email ? (<div className="invalid-feedback">{errors.email.message} </div>) : ""}
+                        
                     </div>
 
                     {/*birthDate  */}
@@ -74,7 +74,7 @@ function Register() {
                     {/*password*/}
                     <div>
                         <label htmlFor="password" className="form-label">Password</label>
-                        <input {...register("password", { required: "Password is required" })} type="text" className={`form-control ${errors.password ? "is-invalid" : ""}`} />
+                        <input {...register("password", { required: "Password is required" })} type="password" className={`form-control ${errors.password ? "is-invalid" : ""}`} />
                         {errors.password ? (<div className="invalid-feedback">{errors.password.message} </div>) : ""}
                     </div>
                     <div>

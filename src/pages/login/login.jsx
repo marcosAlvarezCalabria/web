@@ -18,7 +18,7 @@ function Login() {
    async function handleDataSubmit(data){
         try {
             await login(data);
-            navigate("/");
+            navigate("/profile");
         } catch (error) {
             console.log(error)
 

@@ -1,5 +1,4 @@
 
-import User from "../../../../api/models/user.model";
 import PageLayout from "../../components/layouts/page-layout/page-layout";
 
 function EditProfile(){

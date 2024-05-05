@@ -4,8 +4,8 @@ import("./login.css")
 import backgroundHome from "../../assets/images/background-home-black.jpg"
 import { useForm } from "react-hook-form"
 import { NavLink, useNavigate } from "react-router-dom";
-import { login } from "../../services/api.services";
-import { Navigate} from "react-router-dom"
+import { useContext } from "react";
+import AuthContext from "../../contexts/auth.context.jsx"
 
 
 
@@ -14,10 +14,11 @@ function Login() {
 
     const { register, handleSubmit, formState: {errors}} = useForm()
     const navigate = useNavigate();
+    const { doLogin } = useContext(AuthContext)
 
    async function handleDataSubmit(data){
         try {
-            await login(data);
+            await doLogin(data);
             navigate("/profile");
         } catch (error) {
             console.log(error)

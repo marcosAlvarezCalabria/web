@@ -49,3 +49,7 @@ export function getUserProfile(data) {
 export function editUserProfile(data) {
   return http.patch("/profile", data)
 }
+
+export function logout() {
+  localStorage.removeItem("token");
+}

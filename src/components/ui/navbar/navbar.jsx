@@ -21,10 +21,12 @@ function Navbar() {
     <nav className="navbar fixed-top bg-dark">
       <div className="container-fluid">
         <NavLink to="/" className="navbar-brand"><img src={logo} alt="" /></NavLink>
-        <p>{user?.name}</p>
+        <NavLink to="/profile" className="navbar-brand"><p>{user?.name}</p></NavLink>
         <div className="buttons row">
           <div className="col-4"></div>
           <div className="col-4">
+        
+            
             {user ? (
               <button className="nav-link btn btn-outline-danger" onClick={doLogout}>Logout</button>
             ) : (

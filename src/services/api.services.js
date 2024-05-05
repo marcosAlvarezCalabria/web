@@ -46,7 +46,7 @@ export function getUserProfile(data) {
    return http.get("/profile", data)
 }
 
-export function editUserProfile(data) {
+export function updateUser(data) {
   return http.patch("/profile", data)
 }
 

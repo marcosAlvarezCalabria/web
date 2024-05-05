@@ -3,7 +3,7 @@ import backgroundProfile from "../../assets/images/background-home.jpg"
 import { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { getUserProfile } from "../../services/api.services";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,NavLink } from "react-router-dom";
 
 
 
@@ -33,10 +33,7 @@ function Profile() {
         fetch()
     }, [])
 
-    const handleClick = () => {
-        navigate("/profile/edit")
-
-    }
+    
 
     return (
         <PageLayout background={backgroundProfile}>
@@ -45,10 +42,11 @@ function Profile() {
                     <h1 className="">Profile</h1>
                    <div className="row">
                     <div className="col-md-2">
-                        <h3 className="row-column-2">{user.name}</h3>
+                        <h3 className="row-column-2">{user?.name}</h3>
+                        <NavLink to={"/profile/edit"}>Edit</NavLink>
                     </div>
                     <div className="col-md-6">     
-                    <button onClick={handleClick}>edit</button>
+                    
                     </div>
                     
                    </div>

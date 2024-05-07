@@ -4,7 +4,7 @@ import("./login.css")
 import backgroundHome from "../../assets/images/background-home-black.jpg"
 import { useForm } from "react-hook-form"
 import { NavLink, useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useRef, useState } from "react";
 import AuthContext from "../../contexts/auth.context.jsx"
 
 
@@ -15,17 +15,22 @@ function Login() {
     const { register, handleSubmit, formState: {errors}} = useForm()
     const navigate = useNavigate();
     const { doLogin } = useContext(AuthContext)
+    const [apiError, setApiError] = useState("") 
 
    async function handleDataSubmit(data){
-        try {
-            await doLogin(data);
-            navigate("/profile");
-        } catch (error) {
-            console.log(error)
-
+    try {
+        await doLogin(data);
+        navigate("/profile");
+    } catch (error) {
+        console.log(error);
+        console.log(error.response?.data?.message)
+        if (error.response?.data?.message === "Invalids credentials") {
+            setApiError("Invalid email or password. Please try again."); // Establecer el mensaje de error del API
+        } else {
+            setApiError("An error occurred. Please try again later."); // Otro tipo de error
         }
-
     }
+}
 
 
     return (
@@ -43,6 +48,9 @@ function Login() {
                     <label htmlFor="password" className="form-label">Password</label>
                     <input {...register("password",{required:"Password is required"})} type="text" className = {`form-control ${errors.password ? "is-invalid" : ""}`} />
                         {errors.password ? (<div className="invalid-feedback">{errors.password.message} </div>): ""}
+                        {apiError && <div className="alert alert-danger mt-3">{apiError}</div>}
+
+
                     </div>
                 
                     <div className="d-flex justify-content-center">

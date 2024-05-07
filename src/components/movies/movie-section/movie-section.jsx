@@ -1,9 +1,15 @@
-import MoviesList from "../movies-list/movies-list"
+import { useContext } from "react";
+import MoviesList from "../movies-list/movies-list";
+import "./movie-section.css"
+import AuthContext from "../../../contexts/auth.context";
 
-function MoviesSection({genre}){
+function MoviesSection({}){
+    const { user } = useContext(AuthContext);
     return(
-        <div>
-            <MoviesList genre={genre}></MoviesList>
+        <div className=" movieSection container">
+            MoviesSection {user?.genre}
+            <MoviesList query1={"genre"}/>
+
         </div>
     )
 }

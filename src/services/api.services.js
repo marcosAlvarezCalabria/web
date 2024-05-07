@@ -15,7 +15,7 @@ http.interceptors.response.use(
     },
     function (error) {
       if (
-        error.response.status === 401 &&
+        error.response?.status === 401 &&
         location.pathname !== "/login" &&
         location.pathname !== "/register"
       ) {
@@ -31,7 +31,6 @@ http.interceptors.response.use(
   
 
 export function createUser(data) {
-    console.log(`creating user ${data}`)
     return http.post("/user", data)
 }
 export function login(data) {
@@ -52,4 +51,9 @@ export function updateUser(data) {
 
 export function logout() {
   localStorage.removeItem("token");
+}
+
+export function getMovies(params) {
+  return http.get("/movies", { params })
+
 }

@@ -21,7 +21,7 @@ function Navbar() {
     <nav className="navbar fixed-top bg-dark">
       <div className="container-fluid">
         <NavLink to="/" className="navbar-brand"><img src={logo} alt="" /></NavLink>
-        <NavLink to="/profile" className="navbar-brand"><p>{user?.name}</p></NavLink>
+        <NavLink to="/profile"><p>{user?.name}</p></NavLink>
         <div className="buttons row">
           <div className="col-4"></div>
           <div className="col-4">

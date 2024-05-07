@@ -15,13 +15,13 @@ function CenterModeCarousel({ movies }) {
     centerMode: true,
     infinite: true,
     centerPadding: "60px",
-    slidesToShow: 3,
+    slidesToShow: 2,
     speed: 500
   };
   return (
     <div className="container p-4">
       <div className="slider-container">
-      <Slider {...settings}>
+      <Slider {...settings}> 
         {movies.map((movie) => (
           <div key={movie.id}>
             <MovieItem movie={movie} />

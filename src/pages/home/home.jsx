@@ -18,7 +18,7 @@ function Home() {
           </div>
 
           <div className="mb-3">
-            <Link to="/">
+            <Link to="/main">
               <button className="btn btn-danger btn-custom">Explorar</button>
             </Link>
           </div>

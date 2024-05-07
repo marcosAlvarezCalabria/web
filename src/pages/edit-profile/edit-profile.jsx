@@ -14,13 +14,15 @@ function EditProfile() {
 
     const togglePasswordVisibility = () => {
         setPasswordVisible(!passwordVisible);
-        console.log("visible")
+       
       };
 
     async function handleDataSubmit(data) {
         try {
-            await updateUser({ data })
+            await updateUser(data)
+            console.log("esto es handlesubmit")
             navigate("/profile")
+            
         } catch (error) {
             if (error.response?.data.errors) {
                 const { errors } = error.response.data

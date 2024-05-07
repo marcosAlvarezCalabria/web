@@ -43,6 +43,8 @@ function Profile() {
                    <div className="row">
                     <div className="col-md-2">
                         <h3 className="row-column-2">{user?.name}</h3>
+                        <h3 className="row-column-2">{user?.genre}</h3>
+
                         <NavLink to={"/profile/edit"}>Edit</NavLink>
                     </div>
                     <div className="col-md-6">     

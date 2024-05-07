@@ -6,6 +6,7 @@ import Login from "./pages/login/login";
 import Profile from "./pages/profile/profile";
 import Navbar from "./components/ui/navbar/navbar"
 import EditProfile from "./pages/edit-profile/edit-profile";
+import MainPage from "./pages/main/main-page";
 
 
 function App() {
@@ -22,12 +23,13 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/profile/edit" element={<EditProfile/>} />
+          <Route path="/main" element = {<MainPage/>} />
 
 
         </Routes>
        
       </main>
-          <Footer />
+          <Footer/>
 
     </>
 

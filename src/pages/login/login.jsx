@@ -22,8 +22,6 @@ function Login() {
         await doLogin(data);
         navigate("/profile");
     } catch (error) {
-        console.log(error);
-        console.log(error.response?.data?.message)
         if (error.response?.data?.message === "Invalids credentials") {
             setApiError("Invalid email or password. Please try again."); // Establecer el mensaje de error del API
         } else {

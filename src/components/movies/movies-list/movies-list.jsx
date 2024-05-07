@@ -1,39 +1,87 @@
-import {useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import CenterModeCarousel from "../../ui/carousel/center-mode-carousel";
 import AuthContext from "../../../contexts/auth.context";
 import { getMovies } from "../../../services/api.services";
-import MovieItem from "../movie-item/movie-item";
-import CenterModeCarousel from "../../ui/carousel/center-mode-carousel";
 
 
-function MoviesList ({genre}){
-    const [movies,setMovies] = useState ([]);
-    const { user } = useContext(AuthContext)
+
+
+
+function MoviesList({ query1 }) {
+    const [movies, setMovies] = useState([]);
+    const { user } = useContext(AuthContext);
 
 
     useEffect(() => {
-        async function fetch(){
-            try{
+        async function fetch() {
+            try {
                 const query = {}
-                if(genre) query.genre = genre;
-                
-                const { data: movies } = await getMovies(query);
+                if (query1 === "genres") {
+                    query.genre = user?.genre;
+                }
+                const { data: movies } = await getMovies(query)
                 setMovies(movies)
-               
 
-            } catch(error) {
-                console.log(error)
-                //change this 
-            }          
-               }
-        fetch();   
+            }
 
-    }, [genre]);
-     
-    return(
-        
-        <div className='d-flex flex-column gap-1'><CenterModeCarousel movies={movies} /> </div>    
-    
+            catch (error) {
+                console.log(error);
+            }
+        }
+        fetch();
+    }, [])
+
+
+
+
+
+    return (
+        <div>Movieslist
+            <CenterModeCarousel movies={movies} />
+        </div>
+
     )
+
 }
 
 export default MoviesList;
+
+
+
+/*const userModified = { ...user };
+
+// Modificar la propiedad que se pasa como genre en la copia
+if (user) {
+    const genreString = user?.genre;
+    const foundKey = Object.keys(genreData).find(function (clave) {
+        return genreData[clave] === genreString;
+    });
+
+    if (foundKey) {
+        console.info(`found key ${foundKey}`);
+       
+
+        userModified.genre = [foundKey]; // Modificar genre en la copia
+        console.info(`user modified ${userModified.genre}`);
+    } else {
+        console.info(`no found key`);
+    }
+
+    return (
+        <PageLayout>
+            <h1>Main Page</h1>
+            <h2>slider por genero {user.genre}</h2>
+            <MoviesList typeQuery={} />
+            <h2>slider por popularidad </h2>
+        </PageLayout>
+    );
+
+} else if(!user){
+    return (
+        <PageLayout>
+            <h1>Main Page</h1>
+            
+            <MoviesList />
+        </PageLayout>
+    )
+}*/

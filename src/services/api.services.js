@@ -54,6 +54,7 @@ export function logout() {
 }
 
 export function getMovies(params) {
+  //console.log(params)
   return http.get("/movies", { params })
 
 }

@@ -8,7 +8,7 @@ function MoviesSection({}){
     return(
         <div className=" movieSection container">
             MoviesSection {user?.genre}
-            <MoviesList query1={"genre"}/>
+            <MoviesList genre={user?.genre}/>
 
         </div>
     )

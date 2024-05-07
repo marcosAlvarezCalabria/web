@@ -1,13 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import CenterModeCarousel from "../../ui/carousel/center-mode-carousel";
 import AuthContext from "../../../contexts/auth.context";
-import { getMovies } from "../../../services/api.services";
+import { getMovies, getUserProfile } from "../../../services/api.services";
 
 
 
 
 
-function MoviesList({ query1 }) {
+function MoviesList({ genre }) {
     const [movies, setMovies] = useState([]);
     const { user } = useContext(AuthContext);
 
@@ -15,12 +15,12 @@ function MoviesList({ query1 }) {
     useEffect(() => {
         async function fetch() {
             try {
-                const query = {}
-                if (query1 === "genres") {
-                    query.genre = user?.genre;
-                }
-                const { data: movies } = await getMovies(query)
-                setMovies(movies)
+                const query= {};
+                if(genre) query.genres = user.genre
+               const { data: movies }= await getMovies(query)
+               console.log(query)
+               setMovies(movies)
+               getUserProfile(user)
 
             }
 
@@ -29,7 +29,7 @@ function MoviesList({ query1 }) {
             }
         }
         fetch();
-    }, [])
+    }, [genre])
 
 
 

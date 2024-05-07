@@ -8,7 +8,12 @@ export function AuthContextProvider({ children }) {
 
     const [user, setUser] = useState(null);
     const navigate = useNavigate();
-    
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if(token) fetchProfile()
+            else setUser(null)
+    },[]);
 
     async function fetchProfile(){
         try{
@@ -19,16 +24,14 @@ export function AuthContextProvider({ children }) {
         }
 
     }
-    useEffect(() => {
-        const token = localStorage.getItem("token");
-        if(token) fetchProfile()
-            else setUser(null)
-    },[]);
+    
 
     async function doLogin(data) {
         await login(data);
         fetchProfile();
       }
+
+     
     
       function doLogout() {
         setUser(null);
@@ -39,6 +42,7 @@ export function AuthContextProvider({ children }) {
       const value = {
         user,
         doLogin,
+        fetchProfile,
         doLogout,
       };
    

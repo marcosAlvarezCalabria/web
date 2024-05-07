@@ -21,6 +21,7 @@ function EditProfile() {
         try {
             await updateUser(data)
             console.log("esto es handlesubmit")
+            fetchProfile()
             navigate("/profile")
             
         } catch (error) {
@@ -37,7 +38,7 @@ function EditProfile() {
     }
 
 
-    const { user } = useContext(AuthContext)
+    const { user, fetchProfile } = useContext(AuthContext)
 
     return (
         <PageLayout>

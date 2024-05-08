@@ -20,7 +20,6 @@ function EditProfile() {
     async function handleDataSubmit(data) {
         try {
             await updateUser(data)
-            console.log("esto es handlesubmit")
             fetchProfile()
             navigate("/profile")
             

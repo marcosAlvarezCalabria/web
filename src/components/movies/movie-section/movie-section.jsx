@@ -1,16 +1,16 @@
 import { useContext } from "react";
 import MoviesList from "../movies-list/movies-list";
-import "./movie-section.css"
 import AuthContext from "../../../contexts/auth.context";
+import "./movie-section.css";
 
-function MoviesSection({}){
+function MoviesSection({ selectedGenre , title}) {
     const { user } = useContext(AuthContext);
-    return(
-        <div className=" movieSection container">
-            MoviesSection {user?.genre}
-            <MoviesList genre={user?.genre}/>
-
+    return (
+        <div className="movieSection container">
+            <p>{title} {selectedGenre}</p>
+            <MoviesList filter={selectedGenre} />
         </div>
-    )
+    );
 }
+
 export default MoviesSection;

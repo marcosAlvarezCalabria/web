@@ -1,30 +1,29 @@
-import { useEffect, useContext, useState } from "react";
+import { useContext, useState } from "react";
 import PageLayout from "../../components/layouts/page-layout/page-layout";
 import AuthContext from "../../contexts/auth.context";
 import MoviesSection from "../../components/movies/movie-section/movie-section";
-
-
-
+import FormFilter from "../../components/form-filter/form-filter";
 
 function MainPage() {
     const { user } = useContext(AuthContext);
-   
+    const [selectedGenre, setSelectedGenre] = useState(null);
+    
+    const handleGenreChange = (genre) => {
+        setSelectedGenre(genre);
+    };
 
-
-        return (
-            <PageLayout>
-
-                <h1>Main Page</h1>
-                < MoviesSection/>
-                
-            </PageLayout>
-        );
-
-    } 
-
-
+    return (
+        <PageLayout>
+            <h1>Main Page</h1>
+            <FormFilter handleGenreChange={handleGenreChange} />
+            <MoviesSection title= {"genres selected"} selectedGenre={selectedGenre} />
+            <MoviesSection title= {"for you"} selectedGenre={user?.genre}/>
+        </PageLayout>
+    );
+}
 
 export default MainPage;
+
 
 
 

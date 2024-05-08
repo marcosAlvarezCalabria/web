@@ -7,18 +7,19 @@ import { getMovies, getUserProfile } from "../../../services/api.services";
 
 
 
-function MoviesList({ genre }) {
+function MoviesList({ genre,filter }) {
     const [movies, setMovies] = useState([]);
     const { user } = useContext(AuthContext);
-
+console.log("filter desde movielist",filter)
 
     useEffect(() => {
         async function fetch() {
             try {
+                
                 const query= {};
+                if(filter) query.genres = filter
                 if(genre) query.genres = user.genre
                const { data: movies }= await getMovies(query)
-               console.log(query)
                setMovies(movies)
                getUserProfile(user)
 
@@ -29,7 +30,7 @@ function MoviesList({ genre }) {
             }
         }
         fetch();
-    }, [genre])
+    }, [genre,filter])
 
 
 

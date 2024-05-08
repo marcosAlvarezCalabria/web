@@ -6,7 +6,7 @@ import FormFilter from "../../components/form-filter/form-filter";
 
 function MainPage() {
     const { user } = useContext(AuthContext);
-    const [selectedGenre, setSelectedGenre] = useState(null);
+    const [selectedGenre, setSelectedGenre] = useState("");
     
     const handleGenreChange = (genre) => {
         setSelectedGenre(genre);
@@ -16,7 +16,7 @@ function MainPage() {
         <PageLayout>
             <h1>Main Page</h1>
             <FormFilter handleGenreChange={handleGenreChange} />
-            <MoviesSection title= {"genres selected"} selectedGenre={selectedGenre} />
+            <MoviesSection title= {`genres selected`} selectedGenre={selectedGenre} />
             <MoviesSection title= {"for you"} selectedGenre={user?.genre}/>
         </PageLayout>
     );

@@ -7,6 +7,7 @@ import Profile from "./pages/profile/profile";
 import Navbar from "./components/ui/navbar/navbar"
 import EditProfile from "./pages/edit-profile/edit-profile";
 import MainPage from "./pages/main/main-page";
+import MovieDetail from "./components/movies/movie-detail/movie-detail";
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/profile/edit" element={<EditProfile/>} />
           <Route path="/main" element = {<MainPage/>} />
+          <Route path="/movies/:id" element = {<MovieDetail/>}/>
 
 
         </Routes>

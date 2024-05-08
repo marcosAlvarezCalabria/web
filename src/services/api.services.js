@@ -58,3 +58,7 @@ export function getMovies(params) {
   return http.get("/movies", { params })
 
 }
+export function getMovieDetails(id){
+ 
+  return http.get(`/movies/${id}`)
+}

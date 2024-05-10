@@ -1,5 +1,7 @@
 import axios from "axios";
 
+
+
 const http = axios.create({
     baseURL:"http://localhost:3000/api/v1"
 });
@@ -46,6 +48,7 @@ export function getUserProfile(data) {
 }
 
 export function updateUser(data) {
+  console.log(`update user y la data ${data.email}`)
   return http.patch("/profile", data)
 }
 
@@ -61,4 +64,17 @@ export function getMovies(params) {
 export function getMovieDetails(id){
  
   return http.get(`/movies/${id}`)
+}
+
+export function createComment(data, movieId) {
+ // console.log(`esto es la data desde createComment ${data.comments}`)
+  return http.post(`/movie/${movieId}/comments`,data)
+}
+
+export function removeFavorites(movieId,userId){
+  //console.log(`esto es la data desde removeFavorites ${params}`)
+  const data = {
+    movieId:movieId
+  }
+  return http.patch(`/user/favorites/${userId}/remove`,data)
 }

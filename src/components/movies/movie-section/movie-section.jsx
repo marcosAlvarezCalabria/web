@@ -4,7 +4,7 @@ import AuthContext from "../../../contexts/auth.context";
 import "./movie-section.css";
 
 function MoviesSection({ selectedGenre , title}) {
-    const { user } = useContext(AuthContext);
+    
     return (
         <div className="movieSection container">
             <p>{title} {selectedGenre}</p>

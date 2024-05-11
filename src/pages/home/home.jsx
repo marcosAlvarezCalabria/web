@@ -1,8 +1,9 @@
 import PageLayout from "../../components/layouts/page-layout/page-layout";
 import { Link } from "react-router-dom";
 import("./home.css")
-import CenterMode from "../../components/ui/carousel-home/carousel-home";
-import backgroundHomeBlack from "../../assets/images/background-home-black.jpg"
+import backgroundHome from "../../assets/images/background-home3.jpg"
+import { CardMedia } from "@mui/material";
+import CarouselPauseOnHover from "../../components/carousel-pause-on-hover/carousel-pause-on-hover";
 
 
 
@@ -10,7 +11,7 @@ import backgroundHomeBlack from "../../assets/images/background-home-black.jpg"
 function Home() {
   return (
 
-    <PageLayout background={backgroundHomeBlack}>
+    <PageLayout background={backgroundHome}>
       <section className="text-center">
         <div className="d-flex flex-column justify-content-center align-items-center vh-100">
           <div className="row justify-content-center">
@@ -25,7 +26,9 @@ function Home() {
         </div>
         <div className="separation-line"></div>
         <div className="background-slider p-5 container mt-5">
-          <CenterMode></CenterMode>
+          {/* <CenterMode></CenterMode> */}
+          <CarouselPauseOnHover/>
+          
         </div>
 
 

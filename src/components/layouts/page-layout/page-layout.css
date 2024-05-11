@@ -5,7 +5,8 @@
     height: "100%"; 
     min-height: "calc(100vh + 72px)";
 }
-/*.page-layout__register::before {
+/*
+.page-layout__register::before {
     background-image: url(../../../assets/images/background-register1.jpg);
     content: '';
     background-size: cover;
@@ -21,7 +22,7 @@
 }
 
 .page-layout__home::before {
-    background-image: url(../../../assets/images/background-home.jpg);
+    background-image: url(../../../assets/images/background-home3.jpg);
     content: '';
     background-size: cover;
     background-repeat: no-repeat;
@@ -33,5 +34,6 @@
     left: 0;
     z-index: -1;
     opacity: 0.8;
-}*/
+}
 
+*/

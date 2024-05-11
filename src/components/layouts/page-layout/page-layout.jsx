@@ -3,14 +3,14 @@ import "./page-layout.css"
 
 
 
-function PageLayout({ children, background }) {
+function PageLayout({ children, background , className}) {
 
  
   return (
     <>
-    <div  style={{height: "72px"}}></div>
+   
 
-      <div className="page-layout-style" style={{ minHeight: "calc(100vh + 72px)", backgroundImage: `url(${background})`, backgroundSize: 'cover', }}>{children}
+      <div className={className} style={{opacity: "0.9", minHeight: "calc(100vh + 72px)", backgroundImage: `url(${background})`, backgroundSize: 'cover', }}>{children}
       </div>
 
     </>

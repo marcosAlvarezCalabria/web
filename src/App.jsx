@@ -6,7 +6,7 @@ import Login from "./pages/login/login";
 import Profile from "./pages/profile/profile";
 import Navbar from "./components/ui/navbar/navbar"
 import EditProfile from "./pages/edit-profile/edit-profile";
-import MainPage from "./pages/main/main-page";
+import MainPage from "./pages/main-page/main-page";
 import MovieDetail from "./pages/movie-detail/movie-detail";
 
 

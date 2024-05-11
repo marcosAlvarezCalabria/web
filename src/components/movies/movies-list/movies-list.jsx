@@ -7,7 +7,7 @@ import { getMovies, getUserProfile } from "../../../services/api.services";
 
 
 
-function MoviesList({ genre,filter }) {
+function MoviesList({ genre,filter,handlePlayVideo }) {
     const [movies, setMovies] = useState([]);
     const { user } = useContext(AuthContext);
 
@@ -37,7 +37,7 @@ function MoviesList({ genre,filter }) {
 
     return (
         <div>Movieslist
-            <CenterModeCarousel movies={movies} />
+            <CenterModeCarousel handlePlayVideo={handlePlayVideo} movies={movies} />
         </div>
 
     )

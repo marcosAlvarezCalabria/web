@@ -9,7 +9,7 @@ import MovieItem from "../../movies/movie-item/movie-item";
 
 
 
-function CenterModeCarousel({ movies }) {
+function CenterModeCarousel({ movies,handlePlayVideo }) {
   const settings = {
     className: "center",
     centerMode: true,
@@ -24,7 +24,7 @@ function CenterModeCarousel({ movies }) {
       <Slider {...settings}> 
         {movies.map((movie) => (
           <div key={movie.id}>
-            <MovieItem movie={movie} />
+            <MovieItem handlePlayVideo={handlePlayVideo} movie={movie} />
           </div>
         ))}
 

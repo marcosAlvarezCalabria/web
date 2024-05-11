@@ -13,7 +13,6 @@ function MovieDetail() {
     const [movie, setMovie] = useState(null);
     const [error, setError] = useState(null);
     const [comments, setComments] = useState(true)
-    const [alreadyCommented, setAlreadyCommented] = useState(null)
     const { user } = useContext(AuthContext);
 
 
@@ -21,19 +20,13 @@ function MovieDetail() {
         async function fetchMovieDetails() {
             try {
                 const { data } = await getMovieDetails(id);
+               // console.info({data});
                 setMovie(data);
-                 //if (!data.comments.length === 0){
-
-
-                 //}
-                 //const  author  = {...data}
-                 //console.log(user.email)
-                //console.log(...author.comments[0])
             } catch (error) {
                 if (error.response && (error.response.status === 404 || error.response.status === 500)) {
                     setError(error.response.data.message);
                 } else {
-                    setError("Error al cargar los detalles de la película.");
+                    setError("An error ocurred loading details.");
                 }
             }
         }
@@ -44,14 +37,13 @@ function MovieDetail() {
     const handleComments = ()=> {
         setComments(!comments)
     }
-    
-
-
-
+    const commentsA = movie?.comments
+    const showForm = commentsA?.some(comment => comment.author.email === user.email)
     return (
         <PageLayout>
-            <CardMovieDetail movie={movie} error={error}/>
-            <CommentsForm handleComments={handleComments} movie={movie}/>
+             <h2>Movie Details</h2>
+            <CardMovieDetail handleComments={handleComments} showForm={showForm} movie={movie} error={error}/>
+           {!showForm && <CommentsForm handleComments={handleComments} movie={movie}/> }
         </PageLayout>
     );
 }

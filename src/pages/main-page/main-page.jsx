@@ -11,6 +11,10 @@ function MainPage() {
     const handleGenreChange = (genre) => {
         setSelectedGenre(genre);
     };
+    const handlePlayVideo = () => {
+        console.log("aqui desde mainpage")
+
+    }
 
     return (
         <PageLayout>

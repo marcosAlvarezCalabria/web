@@ -78,3 +78,7 @@ export function removeFavorites(movieId,userId){
   }
   return http.patch(`/user/favorites/${userId}/remove`,data)
 }
+export function deleteComment(id){
+  return http.delete(`/movie/${id}/comments`)
+}
+//router.delete("/movie/:id/comments", comments.delete)

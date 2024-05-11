@@ -6,7 +6,6 @@ function CommentsForm({movie ,handleComments}) {
 
 
    async function handleDataSubmit(data){
-    console.log("hola" ,data)
     const movieId = movie.id
        try {
         await createComment(data,movieId)

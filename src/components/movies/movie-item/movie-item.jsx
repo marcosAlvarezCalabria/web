@@ -4,7 +4,7 @@ import AuthContext from "../../../contexts/auth.context";
 import { useContext, useEffect, useState } from "react";
 import { removeFavorites, updateUser } from "../../../services/api.services";
 
-function MovieItem({ movie }) {
+function MovieItem({ movie, handlePlayVideo }) {
   const { user, fetchProfile } = useContext(AuthContext);
   const [isFavorite, setIsFavorite] = useState(true);
 
@@ -27,7 +27,7 @@ function MovieItem({ movie }) {
       }
       setIsFavorite(prevState => prevState); // Cambiar el estado basado en el estado anterior
     } catch (error) {
-      console.error("Ocurrió un error al agregar o eliminar la película de favoritos:", error);
+      console.error("An error ocurred to add movie to favorites:", error);
     }
   }
 
@@ -38,7 +38,7 @@ function MovieItem({ movie }) {
           <i role="button" onClick={handleFavorites} className={`fa ${isFavorite ? "fa-heart" : "fa-heart-o"}`} aria-hidden="true"></i>
           <img src={movie.posterURL} className="card-img-top" alt="..." />
           <div className="card-body">
-            <i className="fa fa-play play_button" data-toggle="tooltip" data-placement="bottom" title="Play Trailer"></i>
+            <i onClick={handlePlayVideo} className="fa fa-play play_button" data-toggle="tooltip" data-placement="bottom" title="Play Trailer"></i>
             <NavLink to={`/movies/${movie.id}`}>
               <i className="fa fa-ellipsis-h" data-toggle="tooltip" data-placement="bottom" title="details"></i>
             </NavLink>

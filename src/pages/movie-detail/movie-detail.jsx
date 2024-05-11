@@ -42,7 +42,7 @@ function MovieDetail() {
     return (
         <PageLayout>
              <h2>Movie Details</h2>
-            <CardMovieDetail handleComments={handleComments} showForm={showForm} movie={movie} error={error}/>
+            <CardMovieDetail handleComments={handleComments}  movie={movie} error={error}/>
            {!showForm && <CommentsForm handleComments={handleComments} movie={movie}/> }
         </PageLayout>
     );

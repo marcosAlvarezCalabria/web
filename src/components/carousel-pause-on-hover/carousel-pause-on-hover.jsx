@@ -1,7 +1,8 @@
 import Slider from "react-slick";
+import "./carousel-pause-on-hover.css"
 
 
-function CarouselPauseOnHover() {
+function CarouselPauseOnHover(movies) {
     var settings = {
       dots: true,
       infinite: true,
@@ -14,24 +15,18 @@ function CarouselPauseOnHover() {
     return (
       <div className="slider-container">
         <Slider {...settings}>
-          <div>
-            <h3>1</h3>
+          {movies.movies.map((movie) => {
+            return(
+              <div>
+                <img src={movie.posterURL} alt="" />
+            <h3>{movie.title}</h3>
           </div>
-          <div>
-            <h3>2</h3>
-          </div>
-          <div>
-            <h3>3</h3>
-          </div>
-          <div>
-            <h3>4</h3>
-          </div>
-          <div>
-            <h3>5</h3>
-          </div>
-          <div>
-            <h3>6</h3>
-          </div>
+
+            )
+
+          })}
+          
+         
         </Slider>
       </div>
     );

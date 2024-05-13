@@ -19,9 +19,9 @@ function App() {
       <main className="flex-shrink-0">
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home/>} />
           <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Login/>} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/profile/edit" element={<EditProfile/>} />
           <Route path="/main" element = {<MainPage/>} />

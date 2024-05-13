@@ -1,14 +1,16 @@
 import PageLayout from "../../components/layouts/page-layout/page-layout";
 import { Link } from "react-router-dom";
 import("./home.css")
-import backgroundHome from "../../assets/images/background-home3.jpg"
-import { CardMedia } from "@mui/material";
-import CarouselPauseOnHover from "../../components/carousel-pause-on-hover/carousel-pause-on-hover";
+import backgroundHome from "../../assets/images/image.jpg"
+import AutoPlay from "../../components/auto-play/auto-play";
+
+
 
 
 
 
 function Home() {
+ 
   return (
 
     <PageLayout background={backgroundHome}>
@@ -19,17 +21,20 @@ function Home() {
           </div>
 
           <div className="mb-3">
-            <Link to="/main">
+            <Link to="/">
               <button className="btn btn-danger btn-custom">Explorar</button>
             </Link>
           </div>
         </div>
         <div className="separation-line"></div>
-        <div className="background-slider p-5 container mt-5">
-          {/* <CenterMode></CenterMode> */}
-          <CarouselPauseOnHover/>
+        <div className="p-5">
+          <div className="background-slider p-5 container d-flex align-item-center">
+           <AutoPlay className="align-item-center"/>
           
         </div>
+        </div>
+
+        
 
 
 
@@ -42,3 +47,6 @@ function Home() {
 }
 
 export default Home;
+
+
+

@@ -11,17 +11,13 @@ function MainPage() {
     const handleGenreChange = (genre) => {
         setSelectedGenre(genre);
     };
-    const handlePlayVideo = () => {
-        console.log("aqui desde mainpage")
-
-    }
 
     return (
         <PageLayout>
             <h1>Main Page</h1>
             <FormFilter handleGenreChange={handleGenreChange} />
-            <MoviesSection title= {`genres selected`} selectedGenre={selectedGenre} />
-            <MoviesSection title= {"for you"} selectedGenre={user?.genre}/>
+            <div><MoviesSection title= {`genres selected`} selectedGenre={selectedGenre} /></div>
+            <div><MoviesSection title= {"for you"} selectedGenre={user?.genre}/></div>
         </PageLayout>
     );
 }
@@ -31,4 +27,3 @@ export default MainPage;
 
 
 
-//* necesito cambiar genre ya que viene como string pero la query hay que hacerla con un numero

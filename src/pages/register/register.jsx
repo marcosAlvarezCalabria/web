@@ -1,7 +1,7 @@
 import PageLayout from "../../components/layouts/page-layout/page-layout";
 import("./register.css");
 import { useForm } from "react-hook-form";
-import backgroundRegister from "../../assets/images/background-register1.jpg"
+import backgroundRegister from "../../assets/images/background-register-1.jpg"
 import { createUser } from "../../services/api.services";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useRef } from "react";

@@ -2,6 +2,7 @@ import { useContext , useState} from "react";
 import MoviesList from "../movies-list/movies-list";
 import VideoPlayer from "../../video-player/video-player"
 import "./movie-section.css";
+import CenterModeCarousel from "../../ui/carousel/center-mode-carousel";
 
 
 function MoviesSection({selectedGenre , title}) {
@@ -18,7 +19,7 @@ function MoviesSection({selectedGenre , title}) {
             <p>{title} {selectedGenre}</p>
             {showVideo? <div><VideoPlayer/></div> : ""}
 
-            <MoviesList handlePlayVideo={handlePlayVideo}  filter={selectedGenre} />
+            <MoviesList carouselType={"CenterModeCarousel"} handlePlayVideo={handlePlayVideo}  filter={selectedGenre} />
         </div>
     );
 }

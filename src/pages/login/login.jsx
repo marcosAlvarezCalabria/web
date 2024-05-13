@@ -1,4 +1,4 @@
-import CenterMode from "../../components/ui/carousel-home/carousel-home";
+
 import PageLayout from "../../components/layouts/page-layout/page-layout";
 import("./login.css")
 import backgroundHome from "../../assets/images/background-home3.jpg"
@@ -9,7 +9,7 @@ import AuthContext from "../../contexts/auth.context.jsx";
 import { Box, TextField } from "@mui/material";
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff'
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 
 
@@ -59,7 +59,7 @@ function Login() {
                     <div>
                         <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                         <i role="button" onClick={handleShowPassword}>{showPassword ?<Visibility  sx={{ color: 'action.active', mr: 1, my: 0.5 }} /> : <VisibilityOff sx={{ color: 'action.active', mr: 1, my: 0.5 }}/>} </i>
-                            <TextField {...register("password", { required: "Password is required" })} type={showPassword ? 'text' : 'password'} className={`${errors.password ? "is-invalid" : ""}`} id="input-with-sx" label="Password" variant="standard" />
+                            <TextField {...register("password", { required: "Password is required" })} type={showPassword ? 'text' : 'password'} className={`${errors.password ? "is-invalid" : ""}`} id="input-with-sx1" label="Password" variant="standard" />
                             {errors.password ? (<div className="invalid-feedback">{errors.password.message} </div>) : ""}
                             {apiError && <div className="alert alert-danger mt-3">{apiError}</div>}
                         </Box>

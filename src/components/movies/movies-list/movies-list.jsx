@@ -2,25 +2,25 @@ import { useContext, useEffect, useState } from "react";
 import CenterModeCarousel from "../../ui/carousel/center-mode-carousel";
 import AuthContext from "../../../contexts/auth.context";
 import { getMovies, getUserProfile } from "../../../services/api.services";
+import CarouselPauseOnHover from "../../carousel-pause-on-hover/carousel-pause-on-hover";
 
 
 
 
 
-function MoviesList({ genre,filter,handlePlayVideo }) {
+function MoviesList({ genre, filter, handlePlayVideo, carouselType }) {
     const [movies, setMovies] = useState([]);
     const { user } = useContext(AuthContext);
-
     useEffect(() => {
         async function fetch() {
             try {
-                
-                const query= {};
-                if(filter) query.genres = filter
-                if(genre) query.genres = user.genre
-               const { data: movies }= await getMovies(query)
-               setMovies(movies)
-               getUserProfile(user)
+
+                const query = {};
+                if (filter) query.genres = filter
+                if (genre) query.genres = user.genre
+                const { data: movies } = await getMovies(query)
+                setMovies(movies)
+                getUserProfile(user)
 
             }
 
@@ -29,15 +29,23 @@ function MoviesList({ genre,filter,handlePlayVideo }) {
             }
         }
         fetch();
-    }, [genre,filter])
+    }, [genre, filter])
+
+    let carouselComponent;
+    switch (carouselType) {
+        case "CenterModeCarousel":
+            carouselComponent = <CenterModeCarousel handlePlayVideo={handlePlayVideo} movies={movies} />;
+        case "CarouselPauseOnHover":
+            carouselComponent = <CarouselPauseOnHover movies={movies} />;
+    }
 
 
 
 
 
     return (
-        <div>Movieslist
-            <CenterModeCarousel handlePlayVideo={handlePlayVideo} movies={movies} />
+        <div>
+            {carouselComponent}
         </div>
 
     )

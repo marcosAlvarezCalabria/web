@@ -1,0 +1,15 @@
+.img-card-home{
+    
+    border-radius: 10px;
+}
+.container-slider-home{
+    border-radius: 10px;
+}
+.hidden-content {
+    
+    width: 0;
+    height: 0;
+    
+    opacity: 0;
+  }
+  

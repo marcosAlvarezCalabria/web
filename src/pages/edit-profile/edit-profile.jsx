@@ -5,17 +5,21 @@ import AuthContext from "../../contexts/auth.context";
 import { updateUser } from "../../services/api.services";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { Box, TextField, Select, MenuItem, responsiveFontSizes} from "@mui/material";
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff'
+import DateRangeRoundedIcon from '@mui/icons-material/DateRangeRounded';
+import MovieFilterIcon from '@mui/icons-material/MovieFilter';
+
 
 function EditProfile() {
     const { register, setError, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
-    const [passwordVisible, setPasswordVisible] = useState(false);
+    const [showPassword, setShowPassword] = useState(false)
+    const { user, fetchProfile } = useContext(AuthContext)
 
-
-    const togglePasswordVisibility = () => {
-        setPasswordVisible(!passwordVisible);
-       
-      };
+    
 
     async function handleDataSubmit(data) {
         try {
@@ -37,78 +41,104 @@ function EditProfile() {
     }
 
 
-    const { user, fetchProfile } = useContext(AuthContext)
+    
+    const handleShowPassword = () => {
+        setShowPassword(!showPassword)
+
+    }
 
     return (
         <PageLayout>
-            <div className=" h-100 d-flex justify-content-center align-items-center row">
-                <form onSubmit={handleSubmit(handleDataSubmit)}  className="form-container pt-4 col-8 col-md-6 col-lg-4">
-                    {/*Name  */}
-                    <div>
-                        <label htmlFor="name"  value={user?.name} className="form-label">Name</label>
-                        <input defaultValue={user?.name} {...register("name", { required: "Name is required" })} type="text" className={`form-control ${errors.name ? "is-invalid" : ""}`} />
-                        {errors.name ? (<div className="invalid-feedback">{errors.name.message} </div>) : ""}
-                    </div>
-                    {/*email  */}
-                    <div>
-                        <label htmlFor="email" className="form-label">Email address</label>
-                        <input defaultValue={user?.email}{...register("email", { required: "Email is required" })} type="email" className={`form-control ${errors.email ? "is-invalid" : ""}`} />
+            <div className="title d-flex justify-content-center align-items-center mt-5 " style={{ minHeight: "25vh" }}>
+                     <h1 className="">Ajustes</h1>
+                </div>
+
+            <div className=" h-100  d-flex justify-content-center align-items-center row-col">
+               
+                
+            
+            <form onSubmit={handleSubmit(handleDataSubmit)} className="form-container pt-0">
+                {/*Name  */}
+                <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+                    <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                    <TextField defaultValue={user?.name} {...register("name", { required: "Name is required" })} type="text" className={` ${errors.name ? "is-invalid" : ""}`} id="input-with-sx" label="Name" variant="standard" />
+                    {errors.name ? (<div className="invalid-feedback">{errors.name.message} </div>) : ""}
+                </Box>
+
+                {/*email  */}
+                <div>
+                    <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+                        <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                        <TextField defaultValue={user?.email} {...register("email", { required: "Email is required" })} type="email" className={`mb-2  ${errors.email ? "is-invalid" : ""}`} id="input-with-sx1" label="Email" variant="standard" />
                         {errors.email ? (<div className="invalid-feedback">{errors.email.message} </div>) : ""}
+                    </Box>
 
-                    </div>
+                </div>
 
-                    {/*birthDate  */}
-                    <div>
-                        <label htmlFor="birthDate" className="form-label"> BirthDate</label>
-                        <input defaultValue={user?.birthDate}  {...register("birthDate", { required: "BirthDate is required" })} type="date" className={`form-control ${errors.birthDate ? "is-invalid" : ""}`} />
-                        {errors.birthDate ? (<div className="invalid-feedback">{errors.birthDate.message} </div>) : ""}
-                    </div>
+                {/*birthDate  */}
+                <div>
 
-                    {/*password*/}
-                    <div>
-                        <label htmlFor="password" className="form-label">Password</label>
-                        <i role="button" className=" m-2 fa fa-eye" onClick={togglePasswordVisibility} aria-hidden="true"></i>
-                        
-                        <input defaultValue={user?.password}   {...register("password", { required: "Password is required" })} type={passwordVisible ? "password": "text" } className={`form-control ${errors.password ? "is-invalid" : ""}`} />
-                        
+                </div>
+                <div className="mt-2">
+                    <DateRangeRoundedIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                    <TextField {...register("birthDate", { required: "BirthDate is required" })} type="date" variant="standard" className={` ${errors.birthDate ? "is-invalid" : ""}`} ></TextField>
 
+                    {errors.birthDate ? (<div className="invalid-feedback">{errors.birthDate.message} </div>) : ""}
+                </div>
+
+                {/*password*/}
+                <div>
+                    <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+                        <i role="button" onClick={handleShowPassword}>{showPassword ? <Visibility sx={{ color: 'action.active', mr: 1, my: 0.5 }} /> : <VisibilityOff sx={{ color: 'action.active', mr: 1, my: 0.5 }} />} </i>
+                        <TextField {...register("password", { required: "Password is required" })} type={showPassword ? 'text' : 'password'} className={`${errors.password ? "is-invalid" : ""}`} id="input-with-sx1" label="Password" variant="standard" />
                         {errors.password ? (<div className="invalid-feedback">{errors.password.message} </div>) : ""}
-                    </div>
-                    <div>
-                        <label htmlFor="genre" className="form-label">Genre</label>
-                        <select  defaultValue={user?.name}  {...register("genre")} className={`form-select mb-2 ${errors.genre ? "is-invalid" : ""}`} aria-label="Default select example">
+
+                    </Box>
+                </div>
+                <div>
+                    <MovieFilterIcon  sx={{ color: 'action.active', mr: 1, my: 1 }}></MovieFilterIcon>
+
+                    <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                         label="BirthDay"
+                         variant="standard"
+                         defaultValue={user?.genre}
+                        {...register("genre")} className={`mb-2 ${errors.genre ? "is-invalid" : ""}`} aria-label="Default select example"
+                    >
+                        <MenuItem value="action">Action</MenuItem>
+                        <MenuItem value="adventure">Adventure</MenuItem>
+                        <MenuItem value="animation">Animation</MenuItem>
+                        <MenuItem value="comedy">Comedy</MenuItem>
+                        <MenuItem value="crime">Crime</MenuItem>
+                        <MenuItem value="documentary">Documentary</MenuItem>
+                        <MenuItem value="drama">Drama</MenuItem>
+                        <MenuItem value="family">Family</MenuItem>
+                        <MenuItem value="fantasy"></MenuItem>
+                        <MenuItem value="history">History</MenuItem>
+                        <MenuItem value="horror">Horror</MenuItem>
+                        <MenuItem value="mystery">Mystery</MenuItem>
+                        <MenuItem value="science fiction">Science Fiction</MenuItem>
+                        <MenuItem value="tv movie">TV Movie</MenuItem>
+                        <MenuItem value="suspense">Suspense</MenuItem>
+                        <MenuItem value="western">Western</MenuItem>
+
+                    </Select>
+                    
+                    {errors.genre ? (<div className="invalid-feedback">{errors.genre.message} </div>) : ""}
+
+                </div>
+                <div className="d-flex justify-content-center">
+                <button type="submit" className="btn col-4 btn-danger mt-5 btn-block mb-2">Sign in</button>
+                </div>
 
 
-                            <option value="action">Action</option>
-                            <option value="adventure">Adventure</option>
-                            <option value="animation">Animation</option>
-                            <option value="comedy">Comedy</option>
-                            <option value="crime">Crime</option>
-                            <option value="documentary">Documentary</option>
-                            <option value="drama">Drama</option>
-                            <option value="family">Family</option>
-                            <option value="fantasy">Fantasy</option>
-                            <option value="history">History</option>
-                            <option value="horror">Horror</option>
-                            <option value="mystery">Mystery</option>
-                            <option value="science fiction">Science Fiction</option>
-                            <option value="tv movie">TV Movie</option>
-                            <option value="suspense">Suspense</option>
-                            <option value="war">War</option>
-                            <option value="western">Western</option>
 
 
-                        </select>
-                        {errors.genre ? (<div className="invalid-feedback">{errors.genre.message} </div>) : ""}
+                
+            </form>
 
-                    </div>
-
-
-
-
-                    <button type="submit" className="btn col-4 btn-danger btn-block mb-2">Sign in</button>
-                </form>
-            </div>
+        </div>
         </PageLayout>
 
     )

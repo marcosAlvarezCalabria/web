@@ -1,11 +1,11 @@
 import PageLayout from "../../components/layouts/page-layout/page-layout";
 import("./register.css");
 import { useForm } from "react-hook-form";
-import backgroundRegister from "../../assets/images/background-register-1.jpg"
+import backgroundRegister from "../../assets/images/img2.jpg"
 import { createUser } from "../../services/api.services";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-import { Box, TextField, Select, MenuItem} from "@mui/material";
+import { Box, TextField, Select, MenuItem, colors} from "@mui/material";
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff'
@@ -57,15 +57,19 @@ function Register() {
     }
 
     return (
-        <PageLayout background={backgroundRegister}>
+        <PageLayout className="row justify-content-center" background={backgroundRegister}>
+
+            <div className=" d-flex justify-content-center align-items-center col-md-8 " >
+                <h1 style={{color: "white"}}>Join our community and start your journey today. Sign up now to access exclusive content and exciting features.</h1>
+            </div>
              
-             <div className=" h-100 d-flex justify-content-center align-items-center row-col" style={{ minHeight: "calc(100vh + 72px)" }}>
+             <div className=" h-100 d-flex justify-content-center align-items-center row-col" >
             
                 <form onSubmit={handleSubmit(handleDataSubmit)} className="form-container">
                     {/*Name  */}
                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                         <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-                        <TextField {...register("name", { required: "Name is required" })} type="text" className={` ${errors.name ? "is-invalid" : ""}`} id="input-with-sx" label="Name" variant="standard" />
+                        <TextField  {...register("name", { required: "Name is required" })} type="text" className={` ${errors.name ? "is-invalid" : ""}`} id="input-with-sx" label="Name" variant="standard" />
                         {errors.name ? (<div className="invalid-feedback">{errors.name.message} </div>) : ""}
                     </Box>
 
@@ -85,7 +89,7 @@ function Register() {
                     </div>
                     <div className="mt-2">
                         <DateRangeRoundedIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-                        <TextField {...register("birthDate", { required: "BirthDate is required" })} type="date" variant="standard" className={` ${errors.birthDate ? "is-invalid" : ""}`} type="date"></TextField>
+                        <TextField {...register("birthDate", { required: "BirthDate is required" })} type="date" variant="standard" className={` ${errors.birthDate ? "is-invalid" : ""}`} ></TextField>
 
                         {errors.birthDate ? (<div className="invalid-feedback">{errors.birthDate.message} </div>) : ""}
                     </div>

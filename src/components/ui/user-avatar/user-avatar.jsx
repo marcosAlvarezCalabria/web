@@ -1,21 +1,16 @@
 import {Avatar, Stack} from '@mui/material';
-import { useContext } from 'react';
-import { useEffect } from 'react';
+import { useContext, useState } from 'react';
 import AuthContext from '../../../contexts/auth.context';
 
-function UserAvatar( ){
+function UserAvatar({ width, height, fontSize }){
     const { user } = useContext(AuthContext)
-
-
-
-    useEffect(() => {
-        console.log(user.name)
-
-
-    },[]);
+   
+       
+    
+    
 
     return(
-       <Stack><Avatar sx={{backgroundColor: "red"}}>{user.name.charAt(0)}</Avatar></Stack>
+       <Stack ><Avatar sx={{ width:{width} ,height: {height}, backgroundColor:"red", fontSize:{fontSize}}}>{user?.name.charAt(0)}</Avatar></Stack>
     )
 }
 

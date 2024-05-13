@@ -41,7 +41,7 @@ function Navbar() {
     <nav style={{ backgroundColor: navbarColor, opacity:"0.8"}} className="navbar fixed-top ">
       <div className="container-fluid">
         <NavLink to="/" className="navbar-brand"><img src={logo} alt="" /></NavLink>
-        <NavLink className={"text-decoration-none"}  to="/profile">{user ? <UserAvatar user={user}/> : "" }</NavLink>
+        <NavLink className={"text-decoration-none"}  to="/profile">{user ? <UserAvatar user={user}/>: "" }</NavLink>
         <div className="buttons row">
           <div className="col-4"></div>
           <div className="col-4">

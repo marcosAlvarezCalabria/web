@@ -1,14 +1,10 @@
 .form-container{
-    background-color: rgb(190, 174, 174);
-    border-radius: 10px;
-    border: solid 2px rgb(16, 15, 15);
+    background-color: rgb(255, 252, 252);
+    
+    border: solid 2px rgb(255, 255, 255);
     color: white;
     padding: 30px;
-
+    opacity: 0.95;
 }
-.form-container{
-    margin-top: 20px;
-    background-color:rgb(226, 219, 219);
 
-    
-}
+
